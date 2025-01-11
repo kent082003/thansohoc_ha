@@ -12,8 +12,9 @@
 
     <!-- Form for date of birth and name -->
     <form id="numerology-form">
-      <label for="dob">Ngày sinh (DD/MM/YYYY):</label>
-      <input type="text" id="dob" placeholder="Nhập ngày sinh" required>
+      <label for="dob">Ngày sinh:</label>
+      <!-- Use the date input for easier date selection -->
+      <input type="date" id="dob" required>
 
       <label for="name">Tên đầy đủ:</label>
       <input type="text" id="name" placeholder="Nhập tên" required>
@@ -21,17 +22,46 @@
       <button type="submit">Tính toán</button>
     </form>
 
-    <!-- Results section -->
+    <!-- Results section with a table -->
     <div id="results">
-      <p id="life-path">Con số chủ đạo: </p>    
-      <p id="destiny-number">Số sứ mệnh: </p>
-      <p id="personality-number">Số nhân cách: </p>
-      <p id="soul-urge-number">Số linh hồn: </p>
-      <p id="maturity-number">Số trưởng thành: </p>
-	   <p id="balance-number">Chỉ số Cân bằng </p> 
-	 
-</div>
-
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>Chỉ số</th>
+            <th>Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Con số chủ đạo</td>
+            <td id="life-path"></td>
+          </tr>
+          <tr>
+            <td>Chỉ số cân bằng</td>
+            <td id="balance-number"></td>
+          </tr>
+          <tr>
+            <td>Số sứ mệnh</td>
+            <td id="destiny-number"></td>
+          </tr>
+          <tr>
+            <td>Số nhân cách</td>
+            <td id="personality-number"></td>
+          </tr>
+          <tr>
+            <td>Số linh hồn</td>
+            <td id="soul-urge-number"></td>
+          </tr>
+          <tr>
+            <td>Số trưởng thành</td>
+            <td id="maturity-number"></td>
+          </tr>
+          <tr>
+            <td>Chỉ số kết nối giữa đường đời và sứ mệnh</td>
+            <td id="life-destiny-connection"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
