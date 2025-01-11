@@ -4,28 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tinh Thần Số Học</title>
-  <link rel="stylesheet" href="style.css">  <!-- Tùy chọn để thêm CSS -->
+  <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
 </head>
 <body>
-
   <div class="container">
     <h1>Tinh Thần Số Học</h1>
+
+    <!-- Form for date of birth and name -->
     <form id="numerology-form">
       <label for="dob">Ngày sinh (DD/MM/YYYY):</label>
       <input type="text" id="dob" placeholder="Nhập ngày sinh" required>
-      
+
       <label for="name">Tên đầy đủ:</label>
       <input type="text" id="name" placeholder="Nhập tên" required>
-      
+
       <button type="submit">Tính toán</button>
     </form>
 
+    <!-- Results section -->
     <div id="results">
       <p id="life-path">Con số chủ đạo: </p>
       <p id="expression-number">Con số biểu hiện: </p>
+      <p id="destiny-number">Số sứ mệnh: </p>
+      <p id="personality-number">Số nhân cách: </p>
+      <p id="soul-urge-number">Số linh hồn: </p>
+      <p id="maturity-number">Số trưởng thành: </p>
     </div>
   </div>
 
-  <script src="code.js"></script>  <!-- Liên kết với file JavaScript của bạn -->
+  <script src="script.js"></script> <!-- Link to JavaScript file -->
 </body>
 </html>
