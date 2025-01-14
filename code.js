@@ -20,7 +20,7 @@ function calculateExpressionNumberByWord(name) {
   };
 
   // Function to reduce a number to a single digit, except for 11, 22, and 33
-  function reduceToSingleDigit(number) {
+  function reduceToSingleDigitExeptMaster(number) {
     while (number > 9 && number !== 11 && number !== 22 && number !== 33) {
       number = number.toString().split('').map(Number).reduce((acc, num) => acc + num, 0);
     }
@@ -41,14 +41,14 @@ function calculateExpressionNumberByWord(name) {
     }, 0);
 
     // Reduce the sum to a single digit
-    return reduceToSingleDigit(sum);
+    return reduceToSingleDigitExeptMaster(sum);
   });
 
   // Sum up the final result of the reduced numbers from each word
   const totalSum = reducedWordNumbers.reduce((acc, num) => acc + num, 0);
   
   // Reduce the total sum to a single digit
-  const finalResult = reduceToSingleDigit(totalSum);
+  const finalResult = reduceToSingleDigitExeptMaster(totalSum);
 
   return finalResult;
 }
@@ -133,7 +133,7 @@ function calculateBalanceNumber(name) {
   return balanceNumber;
 }
 function calculateConnectionNumber(lifePath, expressionNumber) {
-  const connectionNumber = Math.abs(lifePath - expressionNumber);
+  const connectionNumber = Math.abs(reduceToSingleDigit(lifePath) - reduceToSingleDigit(expressionNumber));
   
   // Reduce to a single digit or master number (11, 22, 33)
   let result = connectionNumber;
@@ -172,7 +172,7 @@ function getNumberName(number) {
   return numberNames[number] || "Chưa xác định";
 }
 function calculateSoulPersonalityConnection(soulUrgeNumber, personalityNumber) {
-  const connectionNumber = Math.abs(soulUrgeNumber - personalityNumber);
+  const connectionNumber = Math.abs(reduceToSingleDigit(soulUrgeNumber) - reduceToSingleDigit(personalityNumber));
 
   // Reduce to a single digit or master number (11, 22, 33)
   let result = connectionNumber;
@@ -602,3 +602,143 @@ document.getElementById('month-number').textContent = personalMonth;
   // Display the results section
   document.getElementById('results').style.display = 'block';
 });
+
+   // Modify handleFormSubmit to accept parameters
+function handleFormSubmit(event, name = '', dob = '') {
+  event?.preventDefault(); // Prevent form refresh only if event is passed
+  
+  // Use passed parameters if available
+  const [day, month, year] = dob ? dob.split('/') : [document.getElementById('day').value, document.getElementById('month').value, document.getElementById('year').value];
+  
+  // Get the name parameter if available
+  const userName = name || document.getElementById('name').value;
+
+  // Create a new user data object
+  const userData = {
+    name: userName,
+    dob: `${day}/${month}/${year}`,
+  };
+
+  // Retrieve existing data from localStorage or initialize an empty array
+  let savedData = localStorage.getItem('userData');
+  try {
+    savedData = savedData ? JSON.parse(savedData) : [];
+    if (!Array.isArray(savedData)) {
+      savedData = [];
+    }
+  } catch (error) {
+    console.error('Error parsing saved data:', error);
+    savedData = [];
+  }
+
+  // Check if the data already exists in savedData (to prevent duplicates)
+  const isDuplicate = savedData.some(entry => entry.name === userData.name && entry.dob === userData.dob);
+  if (isDuplicate) {
+    return; // Don't save duplicate data
+  }
+
+  // Add the new entry to the saved data array
+  savedData.push(userData);
+
+  // Save the updated data to localStorage
+  localStorage.setItem('userData', JSON.stringify(savedData));
+
+  // Optionally, hide the saved data list and show the numbers table
+  document.getElementById('saved-data').style.display = 'none';
+  document.getElementById('numbers-table').style.display = 'block';
+
+  // Clear the form if needed
+  document.getElementById('day').value = '';
+  document.getElementById('month').value = '';
+  document.getElementById('year').value = '';
+  document.getElementById('name').value = '';
+}
+
+
+  // Attach event listener to form submission
+  document.querySelector('form').addEventListener('submit', handleFormSubmit);
+
+  // Function to load and display saved data from localStorage
+  function loadSavedData() {
+    const savedData = JSON.parse(localStorage.getItem('userData'));
+
+    const savedDataListContainer = document.getElementById('saved-data-list');
+    savedDataListContainer.innerHTML = ''; // Clear previous saved data
+
+    if (savedData && savedData.length > 0) {
+      savedData.forEach((entry, index) => {
+        const entryDiv = document.createElement('div');
+        entryDiv.style.marginBottom = '10px';
+        entryDiv.style.padding = '10px';
+        entryDiv.style.border = '1px solid #ccc';
+        entryDiv.style.borderRadius = '5px';
+
+        entryDiv.innerHTML = ` 
+          <strong>Entry ${index + 1}:</strong><br>
+          Name: ${entry.name}<br>
+          Date of Birth: ${entry.dob}
+        `;
+
+        // Make the saved entry clickable
+        entryDiv.style.cursor = 'pointer';
+        entryDiv.addEventListener('click', function() {
+          // Populate the form with the selected entry
+          const [day, month, year] = entry.dob.split('/');
+          document.getElementById('day').value = day;
+          document.getElementById('month').value = month;
+          document.getElementById('year').value = year;
+          document.getElementById('name').value = entry.name;
+        });
+
+        savedDataListContainer.appendChild(entryDiv);
+      });
+    } else {
+      savedDataListContainer.innerHTML = "<p>No saved data yet.</p>";
+    }
+  }
+
+  // Load saved data when savedData.html is loaded
+  if (window.location.href.includes('savedData.html')) {
+    loadSavedData();
+  }
+
+  // Function to redirect to savedData.html
+  document.getElementById('check-saved-data-btn').addEventListener('click', function() {
+    window.location.href = "savedData.html"; // Adjust the URL as per your project structure
+  });
+  
+  window.onload = function() {
+  // Retrieve saved data from localStorage
+  const selectedData = JSON.parse(localStorage.getItem('selectedData'));
+  
+  if (selectedData) {
+    document.getElementById('name').value = selectedData.name;
+    document.getElementById('dob').value = selectedData.dob;
+  }
+};
+
+// Function to get query parameters from the URL
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    name: params.get('name'), // Fetches the 'name' parameter
+    day: params.get('day'),   // Fetches the 'day' parameter
+    month: params.get('month'), // Fetches the 'month' parameter
+    year: params.get('year')  // Fetches the 'year' parameter
+  };
+}
+
+// Populate the form fields with the query parameters
+window.onload = function() {
+  const { name, day, month, year } = getQueryParams();
+
+  if (name && day && month && year) {
+    document.getElementById('name').value = decodeURIComponent(name); // Decodes the 'name'
+    document.getElementById('day').value = decodeURIComponent(day);
+    document.getElementById('month').value = decodeURIComponent(month);
+    document.getElementById('year').value = decodeURIComponent(year);
+
+    // Optionally show the numbers table if needed
+    document.getElementById('numbers-table').style.display = 'block';
+  }
+};

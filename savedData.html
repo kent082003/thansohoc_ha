@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Data</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .clear-button {
+      background-color: #f44336; /* Red color for clear button */
+      margin-top: 10px;
+    }
+    .delete-button {
+      background-color: #f44336; /* Red for delete buttons */
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Saved Data</h1>
+
+  <!-- Table to display saved data -->
+  <table id="saved-data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Action</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="saved-data-list">
+      <!-- Saved data will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <!-- Clear button to remove all saved data -->
+  <!--<button class="clear-button" onclick="clearSavedData()">Clear All Saved Data</button>-->
+  <button onclick="window.location.href='index.html';">Back to Main page</button>
+
+  <script>
+    function loadSavedData() {
+      const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+      const savedDataListContainer = document.getElementById('saved-data-list');
+      savedDataListContainer.innerHTML = ''; // Clear the existing rows
+
+      if (savedData.length > 0) {
+        savedData.forEach((entry, index) => {
+          const row = document.createElement('tr');
+
+          row.innerHTML = `
+            <td>${entry.name}</td>
+            <td>${entry.dob}</td>
+            <td><button onclick="viewResult(${index})">View Result</button></td>
+            <td><button class="delete-button" onclick="deleteEntry(${index})">Delete</button></td>
+          `;
+
+          savedDataListContainer.appendChild(row);
+        });
+      } else {
+        savedDataListContainer.innerHTML = `<tr><td colspan="4">No saved data available.</td></tr>`;
+      }
+    }
+
+    function clearSavedData() {
+      localStorage.removeItem('userData');
+      loadSavedData(); // Reload the table after clearing
+    }
+
+    function deleteEntry(index) {
+      const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+      if (index > -1) {
+        savedData.splice(index, 1); // Remove the selected entry
+        localStorage.setItem('userData', JSON.stringify(savedData)); // Update localStorage
+        loadSavedData(); // Reload the table to reflect the changes
+      }
+    }
+
+    function viewResult(index) {
+      const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+      const entry = savedData[index];
+      if (entry) {
+        const url = `index.html?name=${encodeURIComponent(entry.name)}&day=${encodeURIComponent(entry.dob.split('/')[0])}&month=${encodeURIComponent(entry.dob.split('/')[1])}&year=${encodeURIComponent(entry.dob.split('/')[2])}`;
+        window.location.href = url;
+      }
+    }
+
+    // Load data on page load
+    window.onload = loadSavedData;
+  </script>
+</body>
+</html>
