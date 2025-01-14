@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tinh Thần Số Học</title>
+  <title>Thần Số Học</title>
   <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
 </head>
 <body>
 
   <div class="container">
-    <h1>Tinh Thần Số Học</h1>
+    <h1>Thần Số Học</h1>
 
     <!-- Form for day, month, and year of birth -->
     <form id="numerology-form">
@@ -49,132 +49,132 @@
   <tbody>
     <!-- Số Đường Đời -->
    <tr>
+  
   <td id="life-path-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Đường Đời: 
-    <span id="life-path" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('life-path-name')">--</span>
-    <span id="life-path-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Đường Đời: 
+    <span id="life-path" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('life-path-name', this)">--</span>
+    <span id="life-path-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
 	
-	    
+	
   </td>
-</tr>
+
   <!-- Số Su Mệnh -->
-<tr>
+
   <td id="expression-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Su Mệnh: 
-    <span id="expression-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('expression-name')">--</span>
-    <span id="expression-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Su Mệnh: 
+    <span id="expression-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('expression-name', this)">--</span>
+    <span id="expression-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 
 
   <!-- Số Cá Tính -->
-<tr>
+
   <td id="personality-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Cá Tính: 
-    <span id="personality-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('personality-name')">--</span>
-    <span id="personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Cá Tính: 
+    <span id="personality-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('personality-name', this)">--</span>
+    <span id="personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Số Khát Khao Linh Hồn -->
-<tr>
+
   <td id="soul-urge-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Khát Khao Linh Hồn: 
-    <span id="soul-urge-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('soul-urge-name')">--</span>
-    <span id="soul-urge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Linh Hồn: 
+    <span id="soul-urge-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('soul-urge-name', this)">--</span>
+    <span id="soul-urge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
 </tr>
 
 <!-- Số Trưởng Thành -->
-<tr>
+
   <td id="maturity-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Trưởng Thành: 
-    <span id="maturity-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('maturity-name')">--</span>
-    <span id="maturity-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Trưởng Thành: 
+    <span id="maturity-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('maturity-name', this)">--</span>
+    <span id="maturity-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
   <!-- Số Cân Bằng -->
-<tr>
+
   <td id="balance-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Số Cân Bằng: 
-    <span id="balance-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('balance-name')">--</span>
-    <span id="balance-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Cân Bằng: 
+    <span id="balance-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('balance-name', this)">--</span>
+    <span id="balance-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Kết Nối Định Mệnh -->
-<tr>
   <td id="life-destiny-connection-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
     Kết Nối Định Mệnh: 
-    <span id="life-destiny-connection" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('life-destiny-name')">--</span>
-    <span id="life-destiny-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    <span id="life-destiny-connection" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('life-destiny-name', this)">--</span>
+    <span id="life-destiny-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Ngày Sinh -->
-<tr>
+
   <td id="birth-day-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Ngày Sinh: 
-    <span id="birth-day-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('birth-day-name')">--</span>
-    <span id="birth-day-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Ngày Sinh: 
+    <span id="birth-day-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('birth-day-name', this)">--</span>
+    <span id="birth-day-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
 
+</tr>
 <!-- Chỉ Số Kết Nối Linh Hồn - Nhân Cách -->
 <tr>
   <td id="soul-personality-connection-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Kết Nối Linh Hồn - Nhân Cách: 
-    <span id="soul-personality-connection" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('soul-personality-name')">--</span>
-    <span id="soul-personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Kết Nối Linh Hồn - Nhân Cách: 
+    <span id="soul-personality-connection" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('soul-personality-name', this)">--</span>
+    <span id="soul-personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Thiếu -->
-<tr>
+
   <td id="missing-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Thiếu: 
-    <span id="missing-numbers" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('missing-numbers-name')">--</span>
-    <span id="missing-numbers-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Số Thiếu: 
+    <span id="missing-numbers" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('missing-numbers-name', this)">--</span>
+    <span id="missing-numbers-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Tư Duy Lý Trí -->
-<tr>
+
   <td id="intellectual-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Tư Duy Lý Trí: 
-    <span id="intellectual-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('intellectual-name')">--</span>
-    <span id="intellectual-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Tư Duy Lý Trí: 
+    <span id="intellectual-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('intellectual-name', this)">--</span>
+    <span id="intellectual-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Sức Mạnh Tiềm Thức -->
-<tr>
+
   <td id="subconscious-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Sức Mạnh Tiềm Thức: 
-    <span id="subconscious-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('subconscious-name')">--</span>
-    <span id="subconscious-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Sức Mạnh Tiềm Thức: 
+    <span id="subconscious-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('subconscious-name', this)">--</span>
+    <span id="subconscious-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
@@ -183,42 +183,42 @@
 <!-- Chỉ Số Đam Mê -->
 <tr>
   <td id="passion-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Đam Mê: 
-    <span id="passion-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('passion-name')">--</span>
-    <span id="passion-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Đam Mê: 
+    <span id="passion-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('passion-name', this)">--</span>
+    <span id="passion-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Chặng -->
-<tr>
+
   <td id="stage-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Chặng: 
-    <span id="stage-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('stage-name')">--</span>
-    <span id="stage-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Chặng: 
+    <span id="stage-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('stage-name', this)">--</span>
+    <span id="stage-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Thách thức -->
-<tr>
+
   <td id="challenge-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Thách thức: 
-    <span id="challenge-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('challenge-name')">--</span>
-    <span id="challenge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Thách thức: 
+    <span id="challenge-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('challenge-name', this)">--</span>
+    <span id="challenge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
-</tr>
+
 
 <!-- Chỉ Số Năm -->
-<tr>
+
   <td id="year-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ Số Năm: 
-    <span id="year-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('year-name')">--</span>
-    <span id="year-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Năm: 
+    <span id="year-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('year-name', this)">--</span>
+    <span id="year-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
@@ -226,17 +226,16 @@
 
 <tr>
   <td id="month-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-   Chỉ số tháng:
+   Tháng:
  
-       <span id="month-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('month-name')">--</span>
-	 <span id="month-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+       <span id="month-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('month-name', this)">--</span>
+	 <span id="month-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
   </td>
-</tr>
-<tr>
+
   <td id="day-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Chỉ số Ngày: 
-    <span id="day-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('day-name')">--</span>
-    <span id="day-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; top: 25px; left: 0; z-index: 10; white-space: nowrap;">
+    Ngày: 
+    <span id="day-number" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('day-name', this)">--</span>
+    <span id="day-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>

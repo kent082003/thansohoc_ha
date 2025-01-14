@@ -461,15 +461,38 @@ function reduceToSingleDigit(number) {
   }
   return number;
 }
+let currentTooltip = null;
 
-function toggleTooltip(tooltipId) {
-  const tooltip = document.getElementById(tooltipId);
-  if (tooltip.style.display === 'none' || tooltip.style.display === '') {
+function toggleTooltip(elementId, spanElement) {
+  var tooltip = document.getElementById(elementId);
+
+  // Check if a tooltip is already open
+  if (currentTooltip && currentTooltip !== tooltip) {
+    // Hide the previous tooltip
+    currentTooltip.style.display = 'none';
+  }
+
+  // Check if the clicked tooltip is currently hidden
+  if (tooltip.style.display === 'none') {
+    // Show the tooltip
     tooltip.style.display = 'block';
+
+    // Get the position of the span element
+    var rect = spanElement.getBoundingClientRect();
+
+    // Position the tooltip to the right of the span element
+    tooltip.style.left = rect.right + 5 + 'px';  // 5px to the right of the number
+    tooltip.style.top = rect.top + 'px';  // Align tooltip vertically with the number
+
+    // Update the current tooltip
+    currentTooltip = tooltip;
   } else {
+    // Hide the tooltip if it's already visible
     tooltip.style.display = 'none';
+    currentTooltip = null;
   }
 }
+
 // Handle form submission
 document.getElementById('numerology-form').addEventListener('submit', function(e) {
   e.preventDefault();
