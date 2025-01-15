@@ -41,16 +41,15 @@
   </style>
 </head>
 <body>
-  <h1>Saved Data</h1>
-
+  <h1>Danh sách</h1>
   <!-- Table to display saved data -->
   <table id="saved-data-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Date of Birth</th>
-        <th>Action</th>
-        <th>Delete</th>
+        <th>Tên</th>
+        <th>Ngày sinh</th>
+        <th>Bản đồ</th>
+        <th>Xóa</th>
       </tr>
     </thead>
     <tbody id="saved-data-list">
@@ -60,7 +59,7 @@
 
   <!-- Clear button to remove all saved data -->
   <!--<button class="clear-button" onclick="clearSavedData()">Clear All Saved Data</button>-->
-  <button onclick="window.location.href='index.html';">Back to Main page</button>
+  <button onclick="window.location.href='index.html';">Trở về trang chủ</button>
 
   <script>
     function loadSavedData() {
@@ -75,8 +74,8 @@
           row.innerHTML = `
             <td>${entry.name}</td>
             <td>${entry.dob}</td>
-            <td><button onclick="viewResult(${index})">View Result</button></td>
-            <td><button class="delete-button" onclick="deleteEntry(${index})">Delete</button></td>
+            <td><button onclick="viewResult(${index})">Xem bản đồ</button></td>
+            <td><button class="delete-button" onclick="deleteEntry(${index})">Xóa</button></td>
           `;
 
           savedDataListContainer.appendChild(row);
@@ -112,5 +111,6 @@
     // Load data on page load
     window.onload = loadSavedData;
   </script>
+  
 </body>
 </html>

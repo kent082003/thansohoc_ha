@@ -12,6 +12,17 @@ function calculateLifePathNumber(day, month, year) {
 
   return sum;
 }
+function calculateLifePathNumberNoSum(day, month, year) {
+  // Convert day, month, and year into individual digits
+  const digits = (day + month + year).toString().split('').map(Number);
+
+  // Sum the digits
+  let sum = digits.reduce((acc, num) => acc + num, 0);
+
+  // Reduce to a single digit or master number (11, 22, 33) 
+
+  return sum;
+}
 function calculateExpressionNumberByWord(name) {
   const letterToNumber = {
     'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
@@ -52,11 +63,52 @@ function calculateExpressionNumberByWord(name) {
 
   return finalResult;
 }
+function calculateExpressionNumberByWordNoSum(name) {
+  const letterToNumber = {
+    'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+    'j': 1, 'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 6, 'p': 7, 'q': 8, 'r': 9,
+    's': 1, 't': 2, 'u': 3, 'v': 4, 'w': 5, 'x': 6, 'y': 7, 'z': 8
+  };
 
+  // Function to reduce a number to a single digit, except for 11, 22, and 33
+  function reduceToSingleDigitExeptMaster(number) {
+    while (number > 9 && number !== 11 && number !== 22 && number !== 33) {
+      number = number.toString().split('').map(Number).reduce((acc, num) => acc + num, 0);
+    }
+    return number;
+  }
+
+  // Split the name into words and process each word
+  const nameLower = name.toLowerCase();
+  const words = nameLower.split(' '); // Split name by spaces
+
+  const reducedWordNumbers = words.map(word => {
+    // Sum the letters of the word
+    const sum = word.split('').reduce((acc, char) => {
+      if (letterToNumber[char]) {
+        return acc + letterToNumber[char];
+      }
+      return acc;
+    }, 0);
+
+    // Reduce the sum to a single digit
+    return reduceToSingleDigitExeptMaster(sum);
+  });
+
+  // Sum up the final result of the reduced numbers from each word
+  const totalSum = reducedWordNumbers.reduce((acc, num) => acc + num, 0);
+  
+  // Reduce the total sum to a single digit
+  const finalResult = totalSum;
+
+  return finalResult;
+}
 function calculateDestinyNumber(name) {
   return calculateExpressionNumberByWord(name);
 }
-
+function calculateDestinyNumberNoSum(name) {
+  return calculateExpressionNumberByWordNoSum(name);
+}
 function calculatePersonalityNumber(name) {
   const letterToNumber = {
     'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
@@ -79,6 +131,26 @@ function calculatePersonalityNumber(name) {
   return personalityNumber;
 }
 
+function calculatePersonalityNumberNoSum(name) {
+  const letterToNumber = {
+    'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+    'j': 1, 'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 6, 'p': 7, 'q': 8, 'r': 9,
+    's': 1, 't': 2, 'u': 3, 'v': 4, 'w': 5, 'x': 6, 'y': 7, 'z': 8
+  };
+
+  const nameLower = name.toLowerCase();
+  const sum = nameLower.split('').reduce((acc, char) => {
+    if (!'aeiou'.includes(char)) {
+      return acc + (letterToNumber[char] || 0);
+    }
+    return acc;
+  }, 0);
+
+  let personalityNumber = sum;
+ 
+  return personalityNumber;
+}
+
 function calculateSoulUrgeNumber(name) {
   const letterToNumber = {
     'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
@@ -98,6 +170,25 @@ function calculateSoulUrgeNumber(name) {
   while (soulUrgeNumber > 9 && soulUrgeNumber !== 11 && soulUrgeNumber !== 22 && soulUrgeNumber !== 33) {
     soulUrgeNumber = soulUrgeNumber.toString().split('').map(Number).reduce((acc, num) => acc + num, 0);
   }
+  return soulUrgeNumber;
+}
+function calculateSoulUrgeNumberNoSum(name) {
+  const letterToNumber = {
+    'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+    'j': 1, 'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 6, 'p': 7, 'q': 8, 'r': 9,
+    's': 1, 't': 2, 'u': 3, 'v': 4, 'w': 5, 'x': 6, 'y': 7, 'z': 8
+  };
+
+  const nameLower = name.toLowerCase();
+  const sum = nameLower.split('').reduce((acc, char) => {
+    if ('aeiou'.includes(char)) {
+      return acc + (letterToNumber[char] || 0);
+    }
+    return acc;
+  }, 0);
+
+  let soulUrgeNumber = sum;
+ 
   return soulUrgeNumber;
 }
 
@@ -283,22 +374,18 @@ function calculatePassionNumbers(name) {
     }
   });
 
-  // Map frequencies of numbers
-  const numberCount = {};
+  // Find letters that appear more than 2 times and convert them to numbers
+  const frequentNumbers = [];
   for (let char in letterCount) {
-    const number = letterToNumber[char];
-    numberCount[number] = (numberCount[number] || 0) + letterCount[char];
-  }
-
-  // List numbers that appear more than twice
-  const passionNumbers = [];
-  for (let number in numberCount) {
-    if (numberCount[number] > 2) {
-      passionNumbers.push(parseInt(number)); // Add the number to the list
+    if (letterCount[char] > 2) {
+      const number = letterToNumber[char];
+      frequentNumbers.push(number);
     }
   }
 
-  return passionNumbers;
+
+
+  return frequentNumbers;
 }
 
 function calculateRationalThinkingNumber(fullName, birthDay) {
@@ -492,6 +579,104 @@ function toggleTooltip(elementId, spanElement) {
     currentTooltip = null;
   }
 }
+function checkForKarmicDebtNumbers(day, month, year, name) {
+  const karmicDebtNumbers = [13, 14, 16, 19];
+
+  // Calculate the numbers
+  //No nghiep
+	const lifePathNoSum = calculateLifePathNumberNoSum(day, month, year);  // Updated to take day, month, and year
+	const expressionNumberNoSum = calculateExpressionNumberByWordNoSum(name);
+	const personalityNumberNoSum = calculatePersonalityNumberNoSum(name);
+	const soulUrgeNumberNoSum = calculateSoulUrgeNumberNoSum(name);
+
+  // Combine all numbers into an array
+  const allNumbers = [lifePathNoSum, expressionNumberNoSum, personalityNumberNoSum, soulUrgeNumberNoSum];
+
+  // Check if any of the numbers match karmic debt numbers
+  const foundKarmicDebtNumbers = allNumbers.filter(num => karmicDebtNumbers.includes(num));
+
+  if (foundKarmicDebtNumbers.length > 0) {
+    console.log(`Karmic debt numbers found: ${foundKarmicDebtNumbers.join(', ')}`);
+    return foundKarmicDebtNumbers;
+  } else {
+    console.log("No karmic debt numbers found.");
+    return [];
+  }
+}
+
+function Phivatchat(day, month, year, name) {
+  const karmicDebtNumbers = [11,2,6,9];
+
+  // Calculate the numbers
+  //No nghiep
+	const lifePathNoSum = calculateLifePathNumber(day, month, year);  // Updated to take day, month, and year
+	const expressionNumberNoSum = calculateExpressionNumberByWord(name);
+	const personalityNumberNoSum = calculatePersonalityNumber(name);
+	const soulUrgeNumberNoSum = calculateSoulUrgeNumber(name);
+
+  // Combine all numbers into an array
+  const allNumbers = [lifePathNoSum, expressionNumberNoSum, personalityNumberNoSum, soulUrgeNumberNoSum];
+
+  // Check if any of the numbers match karmic debt numbers
+  const foundKarmicDebtNumbers = allNumbers.filter(num => karmicDebtNumbers.includes(num));
+
+  if (foundKarmicDebtNumbers.length > 0) {
+  
+    return foundKarmicDebtNumbers;
+  } else {
+   
+    return [];
+  }
+}
+function Vatchat(day, month, year, name) {
+  const karmicDebtNumbers = [4,7,22];
+
+  // Calculate the numbers
+  //No nghiep
+	const lifePathNoSum = calculateLifePathNumber(day, month, year);  // Updated to take day, month, and year
+	const expressionNumberNoSum = calculateExpressionNumberByWord(name);
+	const personalityNumberNoSum = calculatePersonalityNumber(name);
+	const soulUrgeNumberNoSum = calculateSoulUrgeNumber(name);
+
+  // Combine all numbers into an array
+  const allNumbers = [lifePathNoSum, expressionNumberNoSum, personalityNumberNoSum, soulUrgeNumberNoSum];
+
+  // Check if any of the numbers match karmic debt numbers
+  const foundKarmicDebtNumbers = allNumbers.filter(num => karmicDebtNumbers.includes(num));
+
+  if (foundKarmicDebtNumbers.length > 0) {
+  
+    return foundKarmicDebtNumbers;
+  } else {
+   
+    return [];
+  }
+}
+function Congcuphuongtien(day, month, year, name) {
+  const karmicDebtNumbers = [1,3,5,8];
+
+  // Calculate the numbers
+  //No nghiep
+	const lifePathNoSum = calculateLifePathNumber(day, month, year);  // Updated to take day, month, and year
+	const expressionNumberNoSum = calculateExpressionNumberByWord(name);
+	const personalityNumberNoSum = calculatePersonalityNumber(name);
+	const soulUrgeNumberNoSum = calculateSoulUrgeNumber(name);
+
+  // Combine all numbers into an array
+  const allNumbers = [lifePathNoSum, expressionNumberNoSum, personalityNumberNoSum, soulUrgeNumberNoSum];
+
+  // Check if any of the numbers match karmic debt numbers
+  const foundKarmicDebtNumbers = allNumbers.filter(num => karmicDebtNumbers.includes(num));
+
+  if (foundKarmicDebtNumbers.length > 0) {
+  
+    return foundKarmicDebtNumbers;
+  } else {
+   
+    return [];
+  }
+}
+
 
 // Handle form submission
 document.getElementById('numerology-form').addEventListener('submit', function(e) {
@@ -509,11 +694,14 @@ const personalYearNumber = calculatePersonalYear(day, month, currentYear);
 const personalMonth = calculatePersonalMonth(personalYearNumber);
 const personalDay = calculatePersonalDay(personalMonth);
   // Calculate numbers
+ 
+
+		  /////
   const lifePath = calculateLifePathNumber(day, month, year);  // Updated to take day, month, and year
-  const expressionNumber = calculateExpressionNumberByWord(name);
-  const destinyNumber = calculateDestinyNumber(name);
+   const expressionNumber = calculateExpressionNumberByWord(name);
+   const destinyNumber = calculateDestinyNumber(name);
   const personalityNumber = calculatePersonalityNumber(name);
-  const soulUrgeNumber = calculateSoulUrgeNumber(name);
+   const soulUrgeNumber = calculateSoulUrgeNumber(name);
   const maturityNumber = calculateMaturityNumber(lifePath, expressionNumber);
   const balanceNumber = calculateBalanceNumber(name);
  const connectionNumber = calculateConnectionNumber(lifePath, expressionNumber);
@@ -525,9 +713,13 @@ const personalDay = calculatePersonalDay(personalMonth);
   
  const intellectualNumber = calculateRationalThinkingNumber(name,day);
  const subconsciousNumber = calculateSMTT(name);
+ const debtnumber = checkForKarmicDebtNumbers(day, month, year,name);
 
   // Calculate the passion number
   const passionNumber = calculatePassionNumbers(name);
+   const phivatchat = Phivatchat(day, month, year,name);
+      const vatchat = Vatchat(day, month, year,name);
+	   const congcuphuongtien = Congcuphuongtien(day, month, year,name);
     const { challenge1, challenge2, challenge3, challenge4 } = calculateChallengeNumbers(day, month, year);
 
 const { stage1, stage2, stage3, stage4 } = calculateLifeStages(day, month, year);
@@ -541,15 +733,26 @@ const { stage1, stage2, stage3, stage4 } = calculateLifeStages(day, month, year)
   document.getElementById('challenge-number').textContent = `${challenge1}, ${challenge2}, ${challenge3}, ${challenge4}`;
   document.getElementById('challenge-name').textContent = `Thách thức chặng 1: ${challenge1}, Thách thức chặng 2: ${challenge2}, Thách thức chặng 3: ${challenge3}, Thách thức chặng 4: ${challenge4}`;
   
-
-  // Set the calculated numbers and names
   document.getElementById('year-number').textContent = personalYearNumber;
   document.getElementById('year-name').textContent = getNumberName(personalYearNumber);
+
+  // Set the calculated numbers and names
+  document.getElementById('phivatchat-number').textContent = phivatchat;
+ // document.getElementById('phivatchat-name').textContent = getNumberName(phivatchat);
   
+   document.getElementById('vatchat-number').textContent = vatchat;
+  //document.getElementById('vatchat-name').textContent = getNumberName(vatchat);
+  
+     document.getElementById('congcuphuongtien-number').textContent = congcuphuongtien;
+  //document.getElementById('congcuphuongtien-name').textContent = getNumberName(congcuphuongtien);
   
 document.getElementById('month-number').textContent = personalMonth;
   document.getElementById('month-name').textContent = getNumberName(personalMonth);
   
+  document.getElementById('debt-number').textContent = debtnumber;
+ // document.getElementById('debt-name').textContent = getNumberName(debtnumber);
+  
+
 
   document.getElementById('day-number').textContent = personalDay;
   document.getElementById('day-name').textContent = getNumberName(personalDay);

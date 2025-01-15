@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=2.0">
   <title>Thần Số Học</title>
   <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
 </head>
@@ -33,16 +33,17 @@
     <input type="text" id="name" name="name" placeholder="Nhập tên" required value="Tran Thi Thu Ha"
            style="flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
   </div>
-
+ <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
   <!-- Nút bấm -->
   <button type="submit" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
-    Tính toán
+    Xuất Bản đồ
   </button>
    <!-- Clear Button -->
 
-  <button id="check-saved-data-btn" onclick="window.location.href='savedData.html';" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
- Du lieu Luu Tru
+  <button id="check-saved-data-btn" onclick="window.location.href='savedData.html';" style="padding: 5px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+ Danh sách Tên
 </button>
+ </div>
 </form>
 
 
@@ -51,7 +52,7 @@
 
     <!-- Results section -->
     <div id="results" style="display: none;">
-      <h2>Kết quả Tinh Thần Số Học</h2>
+      <h2>Kết quả</h2>
   <table  id="numbers-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
   <tr>
   <tbody>
@@ -59,7 +60,7 @@
    <tr>
   
   <td id="life-path-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
-    Đường Đời: 
+    Đường Đời
     <span id="life-path" style="font-weight: bold; color: red; cursor: pointer;" onclick="toggleTooltip('life-path-name', this)">--</span>
     <span id="life-path-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
 	
@@ -247,6 +248,52 @@
       Chưa có dữ liệu
     </span>
   </td>
+  </TR>
+  <TR>
+  <tr>
+  <!-- Nợ Nghiệp -->
+  <td id="debt-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    <span id="debt-number" 
+          style="font-size: 24px; color: red; display: block;">--</span>
+    <span id="debt-name" 
+          style="font-size: 16px; color: #000; display: block; margin-top: 5px;">
+      Nợ Nghiệp
+    </span>
+  </td>
+
+  <!-- Phí Vật Chất -->
+  <td id="phivatchat-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    <span id="phivatchat-number" 
+          style="font-size: 24px; color: red; display: block;">--</span>
+    <span id="phivatchat-name" 
+          style="font-size: 16px; color: #000; display: block; margin-top: 5px;">
+      Phí Vật Chất
+    </span>
+  </td>
+
+  <!-- Vật Chất -->
+ <td id="vatchat-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px; font-family: Tahoma;">
+  <span id="vatchat-number" 
+        style="font-size: 24px; color: red; display: block;">--</span>
+  <span id="vatchat-name" 
+        style="font-size: 16px; color: Green; display: block; margin-top: 5px;">
+    Vật Chất
+  </span>
+</td>
+
+
+  
+ <td id="congcuphuongtien-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  <span id="congcuphuongtien-number" 
+        style="font-size: 24px; color: red; display: block;">--</span>
+  <span id="congcuphuongtien-name" 
+        style="font-size: 16px; color: #000; display: block; margin-top: 5px;">
+   Cong Cu Phuong Tien
+  </span>
+</td>
+
+
+
 </tr>
 
   </tbody>
