@@ -12,13 +12,17 @@ body {
 }
 
 .container {
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 40px;
-  width: 100px; /* Increased container width */
-  text-align: center;
+  width: 50%;
+  max-width: 100%; /* Ensures the container spans the entire screen */
+  padding: 20px;
+  box-sizing: border-box;
+  height: 800px; /* Set a fixed height for the container */
+  overflow-y: auto; /* Adds vertical scrollbar if content overflows */
+  justify-content: center;  /* Centers the table horizontally */
+  align-items: center;      /* Centers the table vertically */
+         /* Makes the container take the full height of the viewport */
 }
+
 
 h1 {
   color: #4CAF50;
@@ -141,12 +145,19 @@ button:hover {
 }
 
     /* General container settings */
-    .container {
-      width: 100%;
-      max-width:100%; /* Ensures the container spans the entire screen */
-      padding: 20px;
-      box-sizing: border-box;
-    }
+ .container {
+  width: 50%;
+  max-width: 100%; /* Ensures the container spans the entire screen */
+  padding: 20px;
+  box-sizing: border-box;
+  height: 800px; /* Set a fixed height for the container */
+  overflow-y: auto; /* Adds vertical scrollbar if content overflows */
+  justify-content: center;  /* Centers the table horizontally */
+  align-items: center;      /* Centers the table vertically */
+         /* Makes the container take the full height of the viewport */
+}
+
+
 
     /* Form settings to make it take up full width */
     #numerology-form {

@@ -583,11 +583,10 @@ function checkForKarmicDebtNumbers(day, month, year, name) {
   const karmicDebtNumbers = [13, 14, 16, 19];
 
   // Calculate the numbers
-  //No nghiep
-	const lifePathNoSum = calculateLifePathNumberNoSum(day, month, year);  // Updated to take day, month, and year
-	const expressionNumberNoSum = calculateExpressionNumberByWordNoSum(name);
-	const personalityNumberNoSum = calculatePersonalityNumberNoSum(name);
-	const soulUrgeNumberNoSum = calculateSoulUrgeNumberNoSum(name);
+  const lifePathNoSum = calculateLifePathNumberNoSum(day, month, year);  // Updated to take day, month, and year
+  const expressionNumberNoSum = calculateExpressionNumberByWordNoSum(name);
+  const personalityNumberNoSum = calculatePersonalityNumberNoSum(name);
+  const soulUrgeNumberNoSum = calculateSoulUrgeNumberNoSum(name);
 
   // Combine all numbers into an array
   const allNumbers = [lifePathNoSum, expressionNumberNoSum, personalityNumberNoSum, soulUrgeNumberNoSum];
@@ -597,12 +596,30 @@ function checkForKarmicDebtNumbers(day, month, year, name) {
 
   if (foundKarmicDebtNumbers.length > 0) {
     console.log(`Karmic debt numbers found: ${foundKarmicDebtNumbers.join(', ')}`);
-    return foundKarmicDebtNumbers;
+
+    // Create an array of karmic debt numbers with their corresponding values
+    const karmicDebtResults = foundKarmicDebtNumbers.map(num => {
+      switch(num) {
+        case 14:
+          return "14/5";
+        case 16:
+          return "16/7";
+        case 19:
+          return "19/1";
+        case 13:
+          return "13/4";
+        default:
+          return num; // Return the number itself if no match is found
+      }
+    });
+
+    return karmicDebtResults;
   } else {
     console.log("No karmic debt numbers found.");
-    return [];
+    return ["..."];
   }
 }
+
 
 function Phivatchat(day, month, year, name) {
   const karmicDebtNumbers = [11,2,6,9];
@@ -625,7 +642,7 @@ function Phivatchat(day, month, year, name) {
     return foundKarmicDebtNumbers;
   } else {
    
-    return [];
+   return ["..."];
   }
 }
 function Vatchat(day, month, year, name) {
@@ -649,7 +666,7 @@ function Vatchat(day, month, year, name) {
     return foundKarmicDebtNumbers;
   } else {
    
-    return [];
+    return ["..."];
   }
 }
 function Congcuphuongtien(day, month, year, name) {
@@ -673,7 +690,7 @@ function Congcuphuongtien(day, month, year, name) {
     return foundKarmicDebtNumbers;
   } else {
    
-    return [];
+    return ["..."];
   }
 }
 
@@ -769,7 +786,7 @@ document.getElementById('month-number').textContent = personalMonth;
   document.getElementById('intellectual-name').textContent = getNumberName(intellectualNumber);
 
   // Set the calculated missing numbers
-  document.getElementById('missing-numbers').textContent = missingNumbers.join(', ') || 'Không có';
+  document.getElementById('missing-numbers').textContent = missingNumbers.join(', ') || '...';
   document.getElementById('missing-numbers-name').textContent = missingNumbers.length ? "Thiếu các con số này" : "Không có con số thiếu";
 
   // Set the calculated numbers and names
