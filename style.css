@@ -142,8 +142,8 @@ button:hover {
 
     /* General container settings */
     .container {
-      width: 40%;
-      max-width:50%; /* Ensures the container spans the entire screen */
+      width: 100%;
+      max-width:100%; /* Ensures the container spans the entire screen */
       padding: 20px;
       box-sizing: border-box;
     }
