@@ -8,43 +8,31 @@
 </head>
 <body>
 
-  <div class="container">
+ <div class="container">
     <h1>Thần Số Học</h1>
 
     <!-- Form for day, month, and year of birth -->
-    <form id="numerology-form" style="max-width: 600px; margin: auto; font-family: Arial, sans-serif;">
+    <form id="numerology-form">
       <!-- Ngày sinh -->
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-        <label for="dob" style="min-width: 120px; font-size: 16px;">Ngày sinh:</label>
-        <input type="number" id="day" name="day" placeholder="Ngày" required min="1" max="31" value="1" 
-               style="width: 80px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
-        <input type="number" id="month" name="month" placeholder="Tháng" required min="1" max="12" value="10" 
-               style="width: 80px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
-        <input type="number" id="year" name="year" placeholder="Năm" required min="1900" max="9999" value="1984" 
-               style="width: 100px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+      <div class="form-group">
+        <label for="dob">Ngày sinh:</label>
+        <input type="number" id="day" name="day" placeholder="Ngày" required min="1" max="31" value="1">
+        <input type="number" id="month" name="month" placeholder="Tháng" required min="1" max="12" value="10">
+        <input type="number" id="year" name="year" placeholder="Năm" required min="1900" max="9999" value="1984">
       </div>
 
       <!-- Tên đầy đủ -->
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-        <label for="name" style="min-width: 120px; font-size: 16px;">Tên đầy đủ:</label>
-        <input type="text" id="name" name="name" placeholder="Nhập tên" required value="Tran Thi Thu Ha"
-               style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+      <div class="form-group">
+        <label for="name">Tên đầy đủ:</label>
+        <input type="text" id="name" name="name" placeholder="Nhập tên" required value="Tran Thi Thu Ha">
       </div>
 
       <!-- Buttons -->
-      <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
-        <button type="submit" style="padding: 12px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px font-size: 16px;">
-          Xuất Bản đồ
-        </button>
-        
-        <button id="check-saved-data-btn" onclick="window.location.href='savedData.html';" 
-                style="padding: 12px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px font-size: 16px;">
-          Danh sách Tên
-        </button>
+      <div class="button-group">
+        <button type="submit">Xuất Bản đồ</button>
+        <button id="check-saved-data-btn" onclick="window.location.href='savedData.html';">Danh sách Tên</button>
       </div>
     </form>
- 
-
 
 
   
@@ -91,12 +79,17 @@
 <!-- Kết Nối Định Mệnh -->
   <td id="life-destiny-connection-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
    
-    <span id="life-destiny-connection" style="font-size: 24px; color: red; display: block;" >--</span> 
+    <span id="life-destiny-connection" style="font-size: 24px; color: red; display: block; cursor: pointer;">--</span>
 	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Kết Nối Đường Đời & Sứ Mệnh
     <span id="life-destiny-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
       Chưa có dữ liệu
     </span>
   </td>
+<!-- Popup (Hidden initially) -->
+<div id="popup" style="display: none; position: fixed; top: 20%; left: 20%; background: white; padding: 20px; border: 2px solid black; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); z-index: 1000;">
+    <div id="popup-content"></div>
+    <button id="close-popup" style="margin-top: 10px;">Close</button>
+</div>
 
 </tr>
 <tr>

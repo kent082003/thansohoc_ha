@@ -289,31 +289,33 @@ function getCanBangName(number) {
   }
 }
 
+// Function to get the Su Menh Name
 function getSuMenhName(number) {
-  const suMenhNames = {
-    7: "SỨ MỆNH\nLV1: Cần có tri thức, kiến thức, đức tin đúng đắn để lan truyền và giúp đỡ mọi người\nLV2: Nâng tầm trí tuệ cho người khác, giúp mọi người phát triển bản thân\nLV3: Cần tìm ra triết lý, niềm tin, lý tưởng sống để mang lại lợi ích cho cộng đồng\nLV4: Thực hiện lý tưởng và ước mơ",
-    9: "SỨ MỆNH\nTrở thành người thay đổi nhận thức, khai tâm cho người khác, làm thủ lĩnh tinh thần\nLV1: Nuôi dưỡng từ bi, trí tuệ để dẫn dắt chính mình\nLV2: Khai tâm, khai tuệ cho người khác\nLV3: Sử dụng tâm từ, trí tuệ của mình để giúp người khác\nLV4: Trở thành thủ lĩnh tinh thần của những tôn giáo, đứng đầu",
-    8: "SỨ MỆNH\nChủ động độc lập về tài chính, tạo ra vật chất và tiền bạc\nLàm chủ và tạo ra nhiều mô hình kinh doanh giúp người khác tăng thu nhập\nTạo ra nhiều di sản để lại cho cuộc đời",
-    1: "SỨ MỆNH\n1. Quyết đoán, tự chủ, độc lập\n2. Trở thành những người xuất sắc trong tổ chức\n3. Trở thành nhà đào tạo\n4. Nhân bản nhà đào tạo",
-    2: "SỨ MỆNH\n1. Lắng nghe thấu hiểu, đồng cảm với mọi người\n2. Đóng vai trò liên kết, hòa giải, dàn xếp và thiết lập công bằng\n3. Tạo ra cộng đồng chia sẻ yêu thương và phát triển bản thân\n4. Chữa lành",
-    3: "SỨ MỆNH\nÝ thức được vai trò của mình, học cách sử dụng ngôn từ của mình để tác động tích cực lên người khác\nTrở thành người kết nối, chia sẻ, truyền động lực, cảm hứng, lan tỏa tích cực cho người khác",
-    4: "SỨ MỆNH\nTập trung vào nghiên cứu chuyên môn để trở thành chuyên gia\nNăng lực chia sẻ, dạy lại kiến thức cho người khác\nĐóng gói thành công thức, thành di sản cho cuộc đời\nTrở thành bậc thầy trong lĩnh vực chuyên môn",
-    5: "SỨ MỆNH\nCấp độ 1: Mang lại niềm vui, tích cực và hài hước cho người khác\nCấp độ 2: Tạo ra sân chơi, mô hình, tổ chức để giúp mọi người được sống là chính họ\nCấp độ 3: Tạo môi trường sống tốt đẹp, hoạt động vui chơi hướng tới tinh thần",
-    6: "SỨ MỆNH\nYêu thương bản thân đúng cách\nMang tình yêu thương ấm áp cho người khác, giúp họ vượt qua khó khăn trong cuộc sống bằng tình yêu và trí tuệ\nTạo ra môi trường hạnh phúc và lo cho cuộc sống của nhiều người",
-    10: "SỨ MỆNH\n1. Quyết đoán, tự chủ, độc lập\n2. Trở thành những người xuất sắc trong tổ chức\n3. Trở thành nhà đào tạo\n4. Nhân bản nhà đào tạo",
-    11: "SỨ MỆNH\n1. Lắng nghe thấu hiểu, đồng cảm với mọi người\n2. Đóng vai trò liên kết, hòa giải, dàn xếp và thiết lập công bằng\n3. Tạo ra cộng đồng chia sẻ yêu thương và phát triển bản thân\n4. Chữa lành",
-    22: "SỨ MỆNH\nÝ thức được vai trò của mình, học cách sử dụng ngôn từ của mình để tác động tích cực lên người khác\nTrở thành người kết nối, chia sẻ, truyền động lực, cảm hứng, lan tỏa tích cực cho người khác"
-  };
+    const suMenhNames = {
+        7: "SỨ MỆNH\nLV1: Cần có tri thức, kiến thức, đức tin đúng đắn để lan truyền và giúp đỡ mọi người\nLV2: Nâng tầm trí tuệ cho người khác, giúp mọi người phát triển bản thân\nLV3: Cần tìm ra triết lý, niềm tin, lý tưởng sống để mang lại lợi ích cho cộng đồng\nLV4: Thực hiện lý tưởng và ước mơ",
+        9: "SỨ MỆNH\nTrở thành người thay đổi nhận thức, khai tâm cho người khác, làm thủ lĩnh tinh thần\nLV1: Nuôi dưỡng từ bi, trí tuệ để dẫn dắt chính mình\nLV2: Khai tâm, khai tuệ cho người khác\nLV3: Sử dụng tâm từ, trí tuệ của mình để giúp người khác\nLV4: Trở thành thủ lĩnh tinh thần của những tôn giáo, đứng đầu",
+        8: "SỨ MỆNH\nChủ động độc lập về tài chính, tạo ra vật chất và tiền bạc\nLàm chủ và tạo ra nhiều mô hình kinh doanh giúp người khác tăng thu nhập\nTạo ra nhiều di sản để lại cho cuộc đời",
+        1: "SỨ MỆNH\n1. Quyết đoán, tự chủ, độc lập\n2. Trở thành những người xuất sắc trong tổ chức\n3. Trở thành nhà đào tạo\n4. Nhân bản nhà đào tạo",
+        2: "SỨ MỆNH\n1. Lắng nghe thấu hiểu, đồng cảm với mọi người\n2. Đóng vai trò liên kết, hòa giải, dàn xếp và thiết lập công bằng\n3. Tạo ra cộng đồng chia sẻ yêu thương và phát triển bản thân\n4. Chữa lành",
+        3: "SỨ MỆNH\nÝ thức được vai trò của mình, học cách sử dụng ngôn từ của mình để tác động tích cực lên người khác\nTrở thành người kết nối, chia sẻ, truyền động lực, cảm hứng, lan tỏa tích cực cho người khác",
+        4: "SỨ MỆNH\nTập trung vào nghiên cứu chuyên môn để trở thành chuyên gia\nNăng lực chia sẻ, dạy lại kiến thức cho người khác\nĐóng gói thành công thức, thành di sản cho cuộc đời\nTrở thành bậc thầy trong lĩnh vực chuyên môn",
+        5: "SỨ MỆNH\nCấp độ 1: Mang lại niềm vui, tích cực và hài hước cho người khác\nCấp độ 2: Tạo ra sân chơi, mô hình, tổ chức để giúp mọi người được sống là chính họ\nCấp độ 3: Tạo môi trường sống tốt đẹp, hoạt động vui chơi hướng tới tinh thần",
+        6: "SỨ MỆNH\nYêu thương bản thân đúng cách\nMang tình yêu thương ấm áp cho người khác, giúp họ vượt qua khó khăn trong cuộc sống bằng tình yêu và trí tuệ\nTạo ra môi trường hạnh phúc và lo cho cuộc sống của nhiều người",
+        10: "SỨ MỆNH\n1. Quyết đoán, tự chủ, độc lập\n2. Trở thành những người xuất sắc trong tổ chức\n3. Trở thành nhà đào tạo\n4. Nhân bản nhà đào tạo",
+        11: "SỨ MỆNH\n1. Lắng nghe thấu hiểu, đồng cảm với mọi người\n2. Đóng vai trò liên kết, hòa giải, dàn xếp và thiết lập công bằng\n3. Tạo ra cộng đồng chia sẻ yêu thương và phát triển bản thân\n4. Chữa lành",
+        22: "SỨ MỆNH\nÝ thức được vai trò của mình, học cách sử dụng ngôn từ của mình để tác động tích cực lên người khác\nTrở thành người kết nối, chia sẻ, truyền động lực, cảm hứng, lan tỏa tích cực cho người khác"
+    };
 
-  // Kiểm tra xem số nhập vào có trong số các số hợp lệ không
-  if (suMenhNames[number]) {
-    return suMenhNames[number];
-  } else {
-    return "Không có thông tin cho số này";
-  }
+    // Check if the number exists in the suMenhNames object
+    if (suMenhNames[number]) {
+        return suMenhNames[number];
+    } else {
+        return "Không có thông tin cho số này";
+    }
 }
+
 // Function to show the description in the popup
-function showDescription(number) {
+function showSMDescription(number) {
     const description = getSuMenhName(number);
 
     if (description) {
@@ -329,20 +331,19 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none'; // Hide the popup
 }
 
-// Event listener for clicking on the Su Menh number
+// Event listener for clicking on the expression number
 document.getElementById('expression-number').addEventListener('click', function () {
-    const suMenhNumber = parseInt(document.getElementById('expression-number').innerText); // Get the number from the span text
+    const expressionNumber = parseInt(document.getElementById('expression-number').innerText); // Get the number from the span text
 
-    if (!isNaN(suMenhNumber)) {
-        showDescription(suMenhNumber); // Show the description for the clicked number
+    if (!isNaN(expressionNumber)) {
+        showSMDescription(expressionNumber); // Show the description for the clicked number
     } else {
-        alert("Please select a valid Su Menh number.");
+        alert("Please select a valid number.");
     }
 });
 
 // Event listener for closing the popup
 document.getElementById('close-popup').addEventListener('click', closePopup);
-
 
 function getConnectionName(number) {
   const connectionNames = {
@@ -367,6 +368,39 @@ function getConnectionName(number) {
     return "Không có thông tin cho số này";
   }
 }
+
+// Function to show the description in the popup
+function showConnectionDescription(number) {
+    const description = getConnectionName(number);
+
+    if (description) {
+        document.getElementById('popup-content').innerText = description;
+        document.getElementById('popup').style.display = 'block'; // Show the popup
+    } else {
+        alert('No description available for this number.');
+    }
+}
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById('popup').style.display = 'none'; // Hide the popup
+}
+
+// Event listener for clicking on the expression number
+document.getElementById('life-destiny-connection').addEventListener('click', function () {
+    const connection= parseInt(document.getElementById('life-destiny-connection').innerText); // Get the number from the span text
+
+    if (!isNaN(connection)) {
+        showConnectionDescription(connection); // Show the description for the clicked number
+    } else {
+        alert("Please select a valid number.");
+    }
+});
+
+// Event listener for closing the popup
+document.getElementById('close-popup').addEventListener('click', closePopup);
+
+
 function getSoulDesire(number) {
   const soulDesires = {
     7: "LINH HỒN\nKhao khát kiến thức tri thức, trí tuệ và phát triển bản thân\n• Thích những thứ liên quan đến tâm linh huyền bí và không gian thiên nhiên\n• Thích ở 1 mình và nhìn nhận lại bản thân, có nhiều lúc như ngồi tự kỷ 1 mình",
@@ -911,13 +945,20 @@ function calculatePersonalMonth(personalYear) {
   const personalMonth = personalYear + currentMonth;
 
   // Reduce to a single digit (no exceptions for 11, 22, 33)
-  const reducedPersonalMonth = personalMonth
-    .toString()
-    .split('')
-    .reduce((sum, digit) => sum + parseInt(digit), 0);
-console.log(reducedPersonalMonth);
+  let reducedPersonalMonth = personalMonth;
+
+  // Reduce until the result is a single digit
+  while (reducedPersonalMonth >= 10) {
+    reducedPersonalMonth = reducedPersonalMonth
+      .toString()
+      .split('')
+      .reduce((sum, digit) => sum + parseInt(digit), 0);
+  }
+
+  console.log(reducedPersonalMonth);
   return reducedPersonalMonth;
 }
+
 
 function calculatePersonalDay(personalMonth) {
   // Get the current day of the month
@@ -926,11 +967,15 @@ function calculatePersonalDay(personalMonth) {
   // Calculate the personal day number
   const personalDay = personalMonth + currentDay;
 
-  // Reduce to a single digit (no exceptions for 11, 22, 33)
-  const reducedPersonalDay = personalDay
-    .toString()
-    .split('')
-    .reduce((sum, digit) => sum + parseInt(digit), 0);
+  // Reduce the personal day number to a single digit
+  let reducedPersonalDay = personalDay;
+
+  while (reducedPersonalDay >= 10) {
+    reducedPersonalDay = reducedPersonalDay
+      .toString()
+      .split('')
+      .reduce((sum, digit) => sum + parseInt(digit), 0);
+  }
 
   return reducedPersonalDay;
 }
