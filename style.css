@@ -345,14 +345,21 @@ button:hover {
     }
 	
 
+
+h1 {
+  text-align: center;
+  font-size: 28px; /* Default font size for larger screens */
+  margin-bottom: 30px;
+}
+
 @media (max-width: 768px) {
   h1 {
-    font-size: 12px; /* Smaller font size for medium screens */
+    font-size: 24px; /* Adjust font size for medium screens */
   }
 }
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 12px; /* Even smaller font size for very small screens */
+    font-size: 26px; /* Increased font size for small screens (mobile) */
   }
 }
