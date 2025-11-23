@@ -1097,7 +1097,7 @@ function checkForKarmicDebtNumbers(day, month, year, name) {
 
 
 function Phivatchat(day, month, year, name) {
-  const karmicDebtNumbers = [11,2,6,9];
+  const karmicDebtNumbers = [11,2,6,9,33];
 
   // Calculate the numbers
   //No nghiep
@@ -1489,6 +1489,11 @@ document.getElementById('life-path').addEventListener('click', function () {
         alert("Please select a valid Life Path number.");
     }
 });
+
+
+
+
+
 
 // Event listener for closing the popup
 document.getElementById('close-popup').addEventListener('click', closePopup);
