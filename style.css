@@ -1,365 +1,43 @@
-/* General Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: Arial;
+    padding: 20px;
+    background: #fafafa;
 }
 
-.container {
-  width: 50%;
-  max-width: 100%; /* Ensures the container spans the entire screen */
-  padding: 20px;
-  box-sizing: border-box;
-  height: 800px; /* Set a fixed height for the container */
-  overflow-y: auto; /* Adds vertical scrollbar if content overflows */
-  justify-content: center;  /* Centers the table horizontally */
-  align-items: center;      /* Centers the table vertically */
-         /* Makes the container take the full height of the viewport */
+.num-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
-
-
-h1 {
-  color: #4CAF50;
-  font-size: 20px;
-  margin-bottom: 20px;
+.num-table td {
+    border: 1px solid #333;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
 }
-
-/* Table Styles */
-#numbers-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#numbers-table td {
-  font-weight: bold;
-  padding: 12px; /* Increased padding for better spacing */
-  border: 2px solid #000;
-  border-radius: 5px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  text-align: center;
-  min-width: 120px; /* Ensure table columns have space */
-}
-
-#numbers-table td span {
-  display: inline-block;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  font-weight: bold;
-  color: red;
- 
-}
-
-/*#numbers-table td span:hover {
-  background-color: #fff;
-  border: 1px solid #000;
-  padding: 5px;
-  border-radius: 5px;
-  position: absolute;
-  white-space: nowrap;
-}
-*/
-/* Input and Form Styles */
-form {
-  max-width: 100%; /* Use full width available for the form */
-  width: 100%;
-  margin: 0 auto;
-}
-
-form div {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-label {
-  min-width: 120px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-input[type="number"],
-input[type="text"] {
-  width: 120px; /* Match input width with table cells */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-  box-sizing: border-box; /* Prevent padding from affecting width */
+.num {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d00;
 }
 
 button {
-  width: 100%;
-  padding: 12px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
- 
-  margin-top: 20px;
-  transition: background-color 0.3s;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+/* ADMIN */
+.admin-box {
+    width: 350px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
 }
 
-/* Form Buttons (Danh sách Tên) */
-#check-saved-data-btn {
-  padding: 12px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
- 
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-#check-saved-data-btn:hover {
-  background-color: #45a049;
-}
-
-/* Table Result Styles */
-.result-title {
-  font-weight: bold;
-  color: #333;
-}
-
-.result-value {
-  font-size: 20px;
-  color: #4CAF50;
-}
-
-#results {
-  margin-top: 30px;
-}
-
-    /* General container settings */
- .container {
-  width: 50%;
-  max-width: 100%; /* Ensures the container spans the entire screen */
-  padding: 20px;
-  box-sizing: border-box;
-  height: 800px; /* Set a fixed height for the container */
-  overflow-y: auto; /* Adds vertical scrollbar if content overflows */
-  justify-content: center;  /* Centers the table horizontally */
-  align-items: center;      /* Centers the table vertically */
-         /* Makes the container take the full height of the viewport */
-}
-
-
-
-    /* Form settings to make it take up full width */
-    #numerology-form {
-      display: flex;
-      flex-direction: column;
-      width: 100%; /* Full width of the screen */
-      max-width: 100%; /* Prevents the form from being larger than the container */
-      margin: 0 auto; /* Center the form */
-      font-family: Arial, sans-serif;
-    }
-
-    /* Flexbox layout for input fields to stretch across the screen */
-    #numerology-form > div {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    /* Input fields to take up maximum space */
-    input[type="number"], input[type="text"] {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-
-    /* Buttons styling */
-    button {
-      padding: 12px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-     
-      font-size: 16px;
-      width: 100%; /* Full width for the buttons */
-      margin: 5px 0;
-    }
-
-    /* Make sure the results table is full width as well */
-    #results table {
-      width: 100%; 
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-	
-	 .results-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
-    }
-    .result-item {
-      width: 45%;
-      border: 2px solid #000;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-    .result-item span {
-      font-size: 24px;
-      color: red;
-      display: block;
-    }
-    .result-item .description {
-      font-size: 16px;
-      color: green;
-      margin-top: 5px;
-    }
-    .result-item .popup {
-      display: none;
-      position: absolute;
-      background: white;
-      padding: 20px;
-      border: 2px solid black;
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-	
-	 /* Basic container styling */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 25px;
-      margin-bottom: 30px;
-    }
-
-    /* Basic styling for the form */
-    #numerology-form {
-      width: 100%;
-      background-color: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 20px;
-      align-items: center;
-    }
-
-    label {
-      min-width: 100px;
-      font-size: 15px;
-    }
-
-    input[type="number"],
-    input[type="text"] {
-      width: 100%; /* Full width on smaller screens */
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-
-    input[type="number"] {
-      max-width: 150px; /* Limit width of number inputs */
-    }
-
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center; /* Center buttons on small screens */
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 12px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      width: 100%; /* Full width for buttons on small screens */
-      max-width: 250px; /* Max width for buttons */
-    }
-
-    /* Media queries for small screens (mobile) */
-    @media (max-width: 768px) {
-      .container {
-        width: 80%; /* Container takes up 90% on smaller screens */
-      }
-
-      .form-group {
-        flex-direction: column; /* Stack inputs vertically */
-        align-items: flex-start;
-      }
-
-      label {
-        min-width: 100%;
-        margin-bottom: 8px; /* Add some space between the label and input */
-      }
-
-      input[type="number"],
-      input[type="text"] {
-        width: 100%; /* Full width for inputs on mobile */
-      }
-
-      .button-group {
-        flex-direction: column;
-        gap: 10px; /* More gap between buttons on mobile */
-      }
-    }
-
-    /* Media query for very small screens (e.g., portrait phones) */
-    @media (max-width: 480px) {
-      button {
-        padding: 10px 12px; /* Adjust button padding for very small screens */
-      }
-    }
-	
-
-
-h1 {
-  text-align: center;
-  font-size: 28px; /* Default font size for larger screens */
-  margin-bottom: 30px;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 24px; /* Adjust font size for medium screens */
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 26px; /* Increased font size for small screens (mobile) */
-  }
+.admin-box input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
 }
