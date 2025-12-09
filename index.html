@@ -1,50 +1,342 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Thần Số Học</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+  <title>Thần Số Học</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
 </head>
-
 <body>
 
-<h1>Bảng Thần Số Học</h1>
+ <div class="container">
+    <h1>Thần Số Học</h1>
+	
+	
 
-<div id="pdf-content">
+    <!-- Form for day, month, and year of birth -->
+    <form id="numerology-form">
+      <!-- Ngày sinh -->
+      <div class="birthday-row">
+        <label for="dob">Ngày sinh:</label>
+        <input type="number" id="day" name="day" placeholder="Ngày" required min="1" max="31" value="1">
+        <input type="number" id="month" name="month" placeholder="Tháng" required min="1" max="12" value="10">
+        <input type="number" id="year" name="year" placeholder="Năm" required min="1900" max="9999" value="1984">
+      </div>
 
-<table class="num-table">
+
+
+
+      <!-- Tên đầy đủ -->
+      <div class="form-group">
+        <label for="name">Tên đầy đủ:</label>
+        <input type="text" id="name" name="name" placeholder="Nhập tên" required value="Tran Thi Thu Ha">
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit">Xuất Bản đồ</button>
+        <button id="check-saved-data-btn" onclick="window.location.href='savedData.html';">Danh sách Tên</button>
+      </div>
+    </form>
+
+
+  
+    <!-- Results section -->
+    <div id="results" style="display: none;">
+      <h2>Kết quả</h2>
+  <table  id="numbers-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
   <tr>
-    <td><span id="n6" class="num"></span><br>Đường đời</td>
-    <td><span id="n22" class="num"></span><br>Sứ mệnh</td>
-    <td><span id="n2" class="num"></span><br>Kết nối đường đời</td>
-  </tr>
+  <tbody>
+    <!-- Số Đường Đời -->
+   <tr>
+  
+  
+  <td id="life-path-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    <span id="life-path" style="font-size: 24px; color: red; display: block; cursor: pointer;">--</span>
+    <span style="font-size: 16px; color: Green; display: block; margin-top: 5px;">Đường Đời</span>
+    <span id="life-path-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px; white-space: nowrap;"></span>
+</td>
 
-  <tr>
-    <td><span id="n8" class="num"></span><br>Tính cách</td>
-    <td><span id="n5" class="num"></span><br>Linh hồn</td>
-    <td><span id="n3" class="num"></span><br>Kết nối LH–NC</td>
-  </tr>
-
-  <!-- Bạn có thể thêm các ô khác -->
-</table>
-
-<h2>Ý nghĩa</h2>
-<div id="meanings"></div>
-
+<!-- Popup (Hidden initially) -->
+<div id="popup" style="display: none; position: fixed; top: 20%; left: 20%; background: white; padding: 20px; border: 2px solid black; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); z-index: 1000;">
+    <div id="popup-content"></div>
+    <button id="close-popup" style="margin-top: 10px;">Close</button>
 </div>
 
-<button onclick="downloadPDF()">Xuất PDF</button>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <!-- Số Su Mệnh -->
 
-<!-- html2pdf -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <td id="expression-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="expression-number" style="font-size: 24px; color: red; display: block; cursor: pointer;">--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Sứ Mệnh
+    <span id="expression-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
 
-<script src="firebase.js"></script>
-<script src="script.js"></script>
-<script src="pdf.js"></script>
+<!-- Popup (Hidden initially) -->
+<div id="popup" style="display: none; position: fixed; top: 20%; left: 20%; background: white; padding: 20px; border: 2px solid black; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); z-index: 1000;">
+    <div id="popup-content"></div>
+    <button id="close-popup" style="margin-top: 10px;">Close</button>
+</div>
 
+<!-- Kết Nối Định Mệnh -->
+  <td id="life-destiny-connection-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="life-destiny-connection" style="font-size: 24px; color: red; display: block; cursor: pointer;">--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Kết Nối Đường Đời & Sứ Mệnh
+    <span id="life-destiny-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+<!-- Popup (Hidden initially) -->
+<div id="popup" style="display: none; position: fixed; top: 20%; left: 20%; background: white; padding: 20px; border: 2px solid black; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); z-index: 1000;">
+    <div id="popup-content"></div>
+    <button id="close-popup" style="margin-top: 10px;">Close</button>
+</div>
+
+</tr>
+<tr>
+
+  <!-- Số Cá Tính -->
+
+  <td id="personality-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  
+    <span id="personality-number" style="font-size: 24px; color: red; display: block;" >--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Tính Cách
+    <span id="personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+<!-- Số Khát Khao Linh Hồn -->
+
+  <td id="soul-urge-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="soul-urge-number" style="font-size: 24px; color: red; display: block;" >--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Linh Hồn
+    <span id="soul-urge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+  <!-- Chỉ Số Kết Nối Linh Hồn - Nhân Cách -->
+    <td id="soul-personality-connection-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    
+    <span id="soul-personality-connection" style="font-size: 24px; color: red; display: block;" >--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Kết Nối Linh Hồn - Nhân Cách
+    <span id="soul-personality-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+</tr>
+<tr>
+<!-- Số Trưởng Thành -->
+
+  <td id="maturity-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  
+    <span id="maturity-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Trưởng Thành
+    <span id="maturity-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+  <!-- Số Cân Bằng -->
+
+  <td id="balance-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="balance-number" style="font-size: 24px; color: red; display: block;" >--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Cân Bằng
+    <span id="balance-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+
+<!-- Chỉ Số Ngày Sinh -->
+
+  <td id="birth-day-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="birth-day-number" style="font-size: 24px; color: red; display: block;" >--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Ngày Sinh
+    <span id="birth-day-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+</tr>
+
+<tr>
+
+
+<!-- Chỉ Số Thiếu -->
+
+  <td id="missing-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;"> 
+   
+    <span id="missing-numbers" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Số Thiếu
+    <span id="missing-numbers-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+<!-- Chỉ Số Tư Duy Lý Trí -->
+
+  <td id="intellectual-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">  
+  
+    <span id="intellectual-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Tư Duy Lý Trí
+    <span id="intellectual-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+<!-- Chỉ Số Sức Mạnh Tiềm Thức -->
+
+  <td id="subconscious-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;"> 
+   
+    <span id="subconscious-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Sức Mạnh Tiềm Thức
+    <span id="subconscious-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+</tr>
+
+<!-- Chỉ Số Đam Mê -->
+<tr>
+  <td id="passion-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;"> 
+   
+    <span id="passion-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Đam Mê
+    <span id="passion-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+<!-- Chỉ Số Chặng -->
+
+  <td id="stage-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">  
+  
+    <span id="stage-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Chặng
+    <span id="stage-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+<!-- Chỉ Số Thách thức -->
+
+  <td id="challenge-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  
+    <span id="challenge-number" style="font-size: 24px; color: red; display: block;" >--</span> 
+ <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">	Thách thức
+    <span id="challenge-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+
+
+</tr>
+
+<tr>
+
+<!-- Chỉ Số Năm -->
+
+  <td id="year-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+   
+    <span id="year-number" style="font-size: 24px; color: red; display: block;" >--</span>
+	<span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Năm
+    <span id="year-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+      Chưa có dữ liệu
+    </span>
+  </td>
+  <td id="month-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  
+       <span id="month-number" style="font-size: 24px; color: red; display: block;" >--</span>
+ <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">	   Tháng
+ 
+	 <span id="month-name" style="display: none; position: absolute; background: #fff; border: 1px solid #000; padding: 5px; border-radius: 5px;white-space: nowrap;">
+  </td>
+
+  <td id="day-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+
+    <span id="day-number"   style="font-size: 24px; color: red; display: block;">--</span> 
+	 <span      style="font-size: 16px; color: Green;display: block; margin-top: 5px;">Ngày</span>
+    <span id="day-name"  style="font-size: 16px; color: Green;display: none; margin-top: 5px;">
+        
+    </span>
+  </td>
+  </TR>
+  <TR>
+  <tr>
+ 
+
+  <!-- Phí Vật Chất -->
+  <td id="phivatchat-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    <span id="phivatchat-number" 
+          style="font-size: 24px; color: red; display: block;">--</span>
+    <span id="phivatchat-name" 
+          style="font-size: 16px; color: Green;display: block; margin-top: 5px;">
+      Phi Vật Chất
+    </span>
+  </td>
+
+  <!-- Vật Chất -->
+ <td id="vatchat-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px; font-family: Tahoma;">
+  <span id="vatchat-number" 
+        style="font-size: 24px; color: red; display: block;">--</span>
+  <span id="vatchat-name" 
+        style="font-size: 16px; color: Green; display: block; margin-top: 5px;">
+    Vật Chất
+  </span>
+</td>
+
+
+  
+ <td id="congcuphuongtien-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+  <span id="congcuphuongtien-number" 
+        style="font-size: 24px; color: red; display: block;">--</span>
+  <span id="congcuphuongtien-name" 
+        style="font-size: 16px; color: Green;display: block; margin-top: 5px;">
+Công cụ phương tiện
+  </span>
+</td>
+
+
+
+</tr>
+<tr>
+ <!-- Nợ Nghiệp -->
+  <td id="debt-number-result" style="font-weight: bold; padding: 10px; border: 2px solid #000; border-radius: 5px;">
+    <span id="debt-number" 
+          style="font-size: 24px; color: red; display: block;">--</span>
+    <span id="debt-name" 
+          style="font-size: 16px; color: Green;display: block; margin-top: 5px;">
+      Nợ Nghiệp
+    </span>
+  </td>
+</tr>
+
+  </tbody>
+</table>
+<table><tr>
+
+
+</tr></table>
+
+    </div>
+  </div>
+
+  <script src="code.js"></script> <!-- Link to external JS file -->
 </body>
 </html>

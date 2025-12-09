@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLOOKUP Simulation with HTML & JavaScript</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result div {
+            padding: 15px;
+            background-color: #f4f4f9;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .lookup-input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .lookup-button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .lookup-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>VLOOKUP Simulation</h2>
+
+    <label for="lookupValue">Enter a number to lookup (7, 9, 8, 1):</label>
+    <input type="number" id="lookupValue" class="lookup-input" placeholder="Enter number">
+    <button class="lookup-button" onclick="lookupValue()">Search</button>
+
+    <div class="result">
+        <h3>Đường Đời</h3>
+        <div id="duongDoiResult"></div>
+    </div>
+
+    <div class="result">
+        <h3>Cân Bằng</h3>
+        <div id="canBangResult"></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Đường Đời</th>
+                <th>Cân Bằng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>7</td>
+                <td>Điềm đạm, hòa nhã, kỹ tính, tiêu chuẩn cao...</td>
+                <td>Thích gánh vác trách nhiệm, giúp đỡ người khác...</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Có năng lực phân tích, trực giác cao, thông minh...</td>
+                <td>Thích giúp đỡ, chia sẻ với người khác...</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Giỏi chiến lược, tư duy logic, tầm nhìn rộng...</td>
+                <td>Nhạy cảm với cơ hội kinh doanh, cần hành động mạnh mẽ...</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Năng động tự lập, quyết liệt trong công việc...</td>
+                <td>Quyết liệt, không thích nhờ sự trợ giúp...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function lookupValue() {
+            // Lấy giá trị từ ô nhập
+            const lookupValue = document.getElementById("lookupValue").value;
+            const duongDoiDiv = document.getElementById("duongDoiResult");
+            const canBangDiv = document.getElementById("canBangResult");
+
+            // Dữ liệu bảng
+            const data = [
+                { number: 7, duongDoi: "Điềm đạm, hòa nhã, kỹ tính, tiêu chuẩn cao...", canBang: "Thích gánh vác trách nhiệm, giúp đỡ người khác..." },
+                { number: 9, duongDoi: "Có năng lực phân tích, trực giác cao, thông minh...", canBang: "Thích giúp đỡ, chia sẻ với người khác..." },
+                { number: 8, duongDoi: "Giỏi chiến lược, tư duy logic, tầm nhìn rộng...", canBang: "Nhạy cảm với cơ hội kinh doanh, cần hành động mạnh mẽ..." },
+                { number: 1, duongDoi: "Năng động tự lập, quyết liệt trong công việc...", canBang: "Quyết liệt, không thích nhờ sự trợ giúp..." }
+            ];
+
+            // Kiểm tra nếu người dùng nhập số hợp lệ
+            if (lookupValue === "") {
+                duongDoiDiv.innerHTML = "<span class='error'>Vui lòng nhập một số hợp lệ!</span>";
+                canBangDiv.innerHTML = "<span class='error'>Vui lòng nhập một số hợp lệ!</span>";
+                return;
+            }
+
+            // Tìm kiếm dữ liệu trong bảng
+            const result = data.find(item => item.number == lookupValue);
+
+            // Hiển thị kết quả
+            if (result) {
+                duongDoiDiv.innerHTML = `<span class='success'>${result.duongDoi}</span>`;
+                canBangDiv.innerHTML = `<span class='success'>${result.canBang}</span>`;
+            } else {
+                duongDoiDiv.innerHTML = "<span class='error'>Không tìm thấy Đường Đời cho số đã nhập.</span>";
+                canBangDiv.innerHTML = "<span class='error'>Không tìm thấy Cân Bằng cho số đã nhập.</span>";
+            }
+        }
+    </script>
+</body>
+</html>
